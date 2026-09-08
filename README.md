@@ -1,5 +1,7 @@
 # Memory Game — Apps & Games
 
+**Live:** https://memory.appsandgames.org/
+
 A standalone multilingual browser memory game with themed sections, difficulty levels, fullscreen mode, persistent settings, Save and Exit, Exit Without Save, saved-game resume, Play Again, multilingual instructions and an Information / Donations dialog.
 
 Open `index.html` in a modern browser. No build step and no external libraries are required.
