@@ -1,0 +1,47 @@
+name: Finalize Memory Game SEO
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/finalize-seo.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply SEO metadata
+        run: python tools/finalize_seo.py
+
+      - name: Check JavaScript syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re, subprocess, tempfile
+          html = Path('index.html').read_text(encoding='utf-8')
+          scripts = re.findall(r'<script(?![^>]*src=)[^>]*>(.*?)</script>', html, re.S)
+          for i, script in enumerate(scripts):
+              if not script.strip() or script.lstrip().startswith('{'):
+                  continue
+              p = Path(tempfile.gettempdir()) / f'memory-inline-{i}.js'
+              p.write_text(script, encoding='utf-8')
+              subprocess.run(['node', '--check', str(p)], check=True)
+          PY
+
+      - name: Commit SEO updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html README.md
+          git rm .github/workflows/finalize-seo.yml tools/finalize_seo.py
+          git commit -m "Finalize Memory Game SEO metadata"
+          git push
