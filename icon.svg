@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Memory Game icon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2ac4ec"/>
+      <stop offset="1" stop-color="#7c63f4"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="#0d1730"/>
+  <rect x="56" y="56" width="400" height="400" rx="92" fill="url(#g)" opacity=".18"/>
+  <g fill="none" stroke="#fff" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M188 131c-49 0-84 35-84 82 0 31 16 56 42 70-19 13-31 35-31 61 0 43 33 76 77 76 25 0 47-11 64-30V171c-16-25-39-40-68-40z"/>
+    <path d="M324 131c49 0 84 35 84 82 0 31-16 56-42 70 19 13 31 35 31 61 0 43-33 76-77 76-25 0-47-11-64-30V171c16-25 39-40 68-40z"/>
+    <path d="M159 215c22 0 40 18 40 40M353 215c-22 0-40 18-40 40M164 337c24 0 44-20 44-44M348 337c-24 0-44-20-44-44" opacity=".9"/>
+  </g>
+</svg>
