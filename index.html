@@ -41,9 +41,9 @@
     button { color: inherit; }
 
     .app {
-      width: min(1180px, 100%);
+      width: min(1040px, 100%);
       margin: 0 auto;
-      padding: 18px clamp(14px, 3vw, 34px) 34px;
+      padding: 14px clamp(12px, 2.4vw, 28px) 28px;
     }
 
     .topbar {
@@ -118,12 +118,12 @@
 
     .hero {
       text-align: center;
-      padding: clamp(16px, 4vw, 36px) 12px 20px;
+      padding: clamp(10px, 2.5vw, 24px) 12px 16px;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(2rem, 6vw, 4.2rem);
+      font-size: clamp(1.9rem, 4.5vw, 3.35rem);
       line-height: .98;
       letter-spacing: -.04em;
       background: linear-gradient(90deg, #ffffff, #9feaff 45%, #c8b9ff);
@@ -172,7 +172,7 @@
 
     .category-card {
       position: relative;
-      min-height: 112px;
+      min-height: 98px;
       border-radius: 17px;
       border: 1px solid var(--border);
       background: rgba(255,255,255,.055);
@@ -188,7 +188,7 @@
       background: linear-gradient(145deg, rgba(104,216,255,.16), rgba(155,123,255,.11));
       box-shadow: inset 0 0 0 1px rgba(104,216,255,.18);
     }
-    .category-card .emoji { font-size: 28px; display: block; margin-bottom: 16px; }
+    .category-card .emoji { font-size: 26px; display: block; margin-bottom: 10px; }
     .category-card strong { display: block; font-size: .95rem; }
     .category-card small { display: block; margin-top: 4px; color: var(--muted); font-size: .73rem; }
 
@@ -239,8 +239,10 @@
     .saved-banner.show { display: block; }
 
     .game-shell {
+      width: min(900px, 100%);
+      margin: 0 auto;
       display: grid;
-      gap: 14px;
+      gap: 10px;
     }
 
     .game-toolbar {
@@ -275,8 +277,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 450px;
-      padding: clamp(10px, 2vw, 18px);
+      min-height: 0;
+      padding: clamp(8px, 1.4vw, 12px);
       background: rgba(2,8,18,.42);
       border: 1px solid var(--border);
       border-radius: 22px;
@@ -284,10 +286,12 @@
     }
 
     .board {
-      width: min(920px, 100%);
+      width: fit-content;
+      max-width: 100%;
       display: grid;
-      grid-template-columns: repeat(var(--cols), minmax(54px, 1fr));
-      gap: clamp(7px, 1.3vw, 12px);
+      grid-template-columns: repeat(var(--cols), clamp(72px, 8vw, 126px));
+      gap: clamp(6px, .9vw, 10px);
+      justify-content: center;
       perspective: 1000px;
     }
 
@@ -332,7 +336,7 @@
     }
     .card-back::before {
       content: "✦";
-      font-size: clamp(1.15rem, 4.2vw, 2.7rem);
+      font-size: clamp(1.05rem, 3vw, 2rem);
       color: rgba(255,255,255,.68);
       text-shadow: 0 0 20px rgba(104,216,255,.45);
     }
@@ -340,7 +344,7 @@
       transform: rotateY(180deg);
       background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(227,239,255,.91));
       color: #11172c;
-      font-size: clamp(1.55rem, 6vw, 4.25rem);
+      font-size: clamp(1.45rem, 4vw, 3rem);
     }
     .memory-card.matched .card-front {
       box-shadow: 0 0 0 2px rgba(114,230,166,.55), 0 10px 25px rgba(114,230,166,.16);
@@ -386,15 +390,98 @@
     .dialog-body p { margin: 8px 0; }
     .dialog-body ul { padding-left: 20px; }
     .dialog-body a { color: #84e4ff; overflow-wrap: anywhere; }
-    .wallet {
-      margin: 9px 0;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.055);
-      border: 1px solid rgba(255,255,255,.07);
-      overflow-wrap: anywhere;
+
+    .dialog.info-dialog { width: min(940px, 100%); }
+    .support-kicker {
+      color: var(--accent);
+      font-size: .74rem;
+      font-weight: 850;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
     }
-    .wallet strong { color: #bdeeff; }
+    .support-intro { color: var(--muted); margin: 7px 0; }
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0 10px;
+    }
+    .payment-card {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.11);
+    }
+    .payment-head { display: flex; align-items: center; gap: 11px; }
+    .payment-icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      color: #c9f5ff;
+      background: linear-gradient(145deg, rgba(49,191,233,.17), rgba(120,105,245,.18));
+      border: 1px solid rgba(104,216,255,.24);
+    }
+    .payment-head strong { font-size: 1.04rem; }
+    .payment-card p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }
+    .payment-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .payment-tag {
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: .7rem;
+      font-weight: 750;
+      color: #c8d5f4;
+      background: rgba(104,216,255,.08);
+      border: 1px solid rgba(104,216,255,.16);
+    }
+    .donate-btn {
+      min-height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 14px;
+      border-radius: 12px;
+      color: #06111f !important;
+      text-decoration: none;
+      font-weight: 900;
+      background: linear-gradient(90deg, #31c8f3, #7164ff);
+      transition: transform .18s ease, filter .18s ease;
+    }
+    .donate-btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+    .payment-note { color: var(--muted); font-size: .78rem; margin: 10px 2px 20px; }
+    .crypto-heading { margin-top: 22px; }
+    .crypto-list { display: grid; gap: 8px; margin-top: 12px; }
+    .wallet-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 13px;
+      background: rgba(255,255,255,.045);
+      border: 1px solid rgba(255,255,255,.09);
+    }
+    .wallet-main { min-width: 0; display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 12px; align-items: center; }
+    .wallet-main strong { color: #eef6ff; }
+    .wallet-address { color: #b9c8e8; overflow-wrap: anywhere; font-size: .8rem; }
+    .copy-btn {
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(104,216,255,.2);
+      background: rgba(104,216,255,.08);
+      color: #dff8ff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: rgba(104,216,255,.14); }
 
     .win-emoji { font-size: 56px; text-align: center; margin: 6px 0 10px; }
     .win-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin: 16px 0; }
@@ -430,6 +517,7 @@
 
     @media (max-width: 820px) {
       .home-grid { grid-template-columns: 1fr; }
+      .payment-grid { grid-template-columns: 1fr; }
       .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .game-toolbar { grid-template-columns: 1fr; }
       .game-title { order: -1; }
@@ -444,14 +532,31 @@
       .top-actions { gap: 6px; }
       select { min-height: 40px; max-width: 116px; }
       .icon-btn { width: 40px; min-height: 40px; }
-      .category-card { min-height: 102px; }
+      .category-card { min-height: 92px; }
       .stat { min-width: 78px; }
-      .board { gap: 6px; }
+      .board {
+        width: 100%;
+        grid-template-columns: repeat(var(--cols), minmax(54px, 1fr));
+        gap: 6px;
+      }
       .card-face { border-radius: 11px; }
       .win-stats { grid-template-columns: 1fr; }
       .win-actions { grid-template-columns: 1fr; }
       .game-actions { display: grid; grid-template-columns: 1fr 1fr; }
       .game-actions .btn { padding: 0 10px; }
+      .wallet-row { grid-template-columns: 1fr; }
+      .wallet-main { grid-template-columns: 50px minmax(0, 1fr); }
+      .copy-btn { width: 100%; }
+    }
+
+    @media (min-width: 821px) and (max-height: 950px) {
+      .app { padding-top: 8px; padding-bottom: 18px; }
+      .topbar { margin-bottom: 9px; }
+      .game-shell { gap: 8px; }
+      .game-toolbar { padding: 9px 10px; }
+      .board-wrap { padding: 8px; }
+      .board { grid-template-columns: repeat(var(--cols), clamp(68px, 7vw, 108px)); gap: 7px; }
+      .game-actions .btn { min-height: 40px; }
     }
   </style>
 </head>
@@ -557,29 +662,50 @@
   </div>
 
   <div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle">
-    <div class="dialog wide">
+    <div class="dialog info-dialog">
       <div class="dialog-head">
         <div>
-          <h2 id="infoTitle">Information / Donations</h2>
+          <div class="support-kicker" data-i18n="infoKicker">Info | Support</div>
+          <h2 id="infoTitle" data-i18n="supportProject">Support the project</h2>
           <p>Apps &amp; Games</p>
         </div>
         <button class="icon-btn dialog-close" data-close="infoModal" type="button" aria-label="Close">✕</button>
       </div>
       <div class="dialog-body">
-        <p>The application is free to use, but donations are welcome.</p>
-        <p>A part of the received donations will be forwarded to various charitable organizations,<br>the largest part will be donated to institutions caring for children without adequate parental care.</p>
-        <p>You can make donations to:</p>
-        <p><strong>PayPal account:</strong><br><a href="https://www.paypal.com/ncp/payment/RU2CWCNVQ7XD6" target="_blank" rel="noopener noreferrer">https://www.paypal.com/ncp/payment/RU2CWCNVQ7XD6</a></p>
-        <p><strong>Card Payment (Stripe):</strong><br><a href="https://buy.stripe.com/7sYeVd7Blfe89cm0k02kw00" target="_blank" rel="noopener noreferrer">https://buy.stripe.com/7sYeVd7Blfe89cm0k02kw00</a></p>
-        <h3>Crypto Wallet:</h3>
-        <div class="wallet"><strong>BTC:</strong><br>bc1qwlrxrh64peukga0fp59m9yg7gpf0yj8q7fxnsc</div>
-        <div class="wallet"><strong>ETH:</strong><br>0xA99A52085c6725854daa46bb302041569c8bA4E3</div>
-        <div class="wallet"><strong>XRP:</strong><br>rP43SsrkhPkxTsFohMAm32sAQg7vqwmDpr</div>
-        <div class="wallet"><strong>SOL:</strong><br>8xkdVTEaDGuWu4aE3HpEx8r9Aux98JZbdsMiDQvJWBWR</div>
-        <div class="wallet"><strong>DOGE:</strong><br>DGAT32ku8WmFaTDxCgVuRuVpUFmfdmD5Jb</div>
-        <div class="wallet"><strong>XML/XLM:</strong><br>GCYH4OD4I2GNRKFFOYROE3N3S2HCT5RXIML3TZV5DP3TLTLXPXQXIJZ3</div>
-        <div class="wallet"><strong>LTC:</strong><br>LWtaFniqdYpv2xJtqo9WqDwCsQ2cW6PYWi</div>
-        <div class="wallet"><strong>RVN:</strong><br>RAtXzKZyB3awfq2u2cK8YppC9kJamU5tPQ</div>
+        <p class="support-intro" data-i18n="donationIntro">The application is free to use, but donations are welcome.</p>
+        <p class="support-intro" data-i18n="donationCharity">A part of the received donations will be forwarded to various charitable organizations. The largest part will be donated to institutions caring for children without adequate parental care.</p>
+        <h3 data-i18n="donateVia">You can make donations through:</h3>
+
+        <div class="payment-grid">
+          <section class="payment-card">
+            <div class="payment-head"><div class="payment-icon" aria-hidden="true">▣</div><strong>PayPal</strong></div>
+            <p data-i18n="paypalDesc">Pay securely with PayPal or other payment methods offered by PayPal Checkout.</p>
+            <div class="payment-tags"><span class="payment-tag">PayPal</span><span class="payment-tag" data-i18n="debitCredit">Debit / credit card</span><span class="payment-tag">Apple Pay</span></div>
+            <a class="donate-btn" href="https://www.paypal.com/ncp/payment/RU2CWCNVQ7XD6" target="_blank" rel="noopener noreferrer" data-i18n="donatePaypal">Donate with PayPal ↗</a>
+          </section>
+
+          <section class="payment-card">
+            <div class="payment-head"><div class="payment-icon" aria-hidden="true">▤</div><strong>Stripe</strong></div>
+            <p data-i18n="stripeDesc">Pay securely by card or with payment methods available through Stripe Checkout.</p>
+            <div class="payment-tags"><span class="payment-tag" data-i18n="debitCredit">Debit / credit card</span><span class="payment-tag">Link</span><span class="payment-tag" data-i18n="digitalWallets">Digital wallets</span></div>
+            <a class="donate-btn" href="https://buy.stripe.com/7sYeVd7Blfe89cm0k02kw00" target="_blank" rel="noopener noreferrer" data-i18n="donateStripe">Donate with Stripe ↗</a>
+          </section>
+        </div>
+
+        <p class="payment-note" data-i18n="paymentAvailability">Available payment methods may vary depending on your country, device and payment provider.</p>
+
+        <h3 class="crypto-heading" data-i18n="cryptoTitle">Crypto wallet</h3>
+        <p class="support-intro" data-i18n="cryptoDesc">You can also support the project with cryptocurrency.</p>
+        <div class="crypto-list">
+          <div class="wallet-row"><div class="wallet-main"><strong>BTC</strong><span class="wallet-address">bc1qwlrxrh64peukga0fp59m9yg7gpf0yj8q7fxnsc</span></div><button class="copy-btn" type="button" data-copy="bc1qwlrxrh64peukga0fp59m9yg7gpf0yj8q7fxnsc" data-i18n="copy">Copy</button></div>
+          <div class="wallet-row"><div class="wallet-main"><strong>ETH</strong><span class="wallet-address">0xA99A52085c6725854daa46bb302041569c8bA4E3</span></div><button class="copy-btn" type="button" data-copy="0xA99A52085c6725854daa46bb302041569c8bA4E3" data-i18n="copy">Copy</button></div>
+          <div class="wallet-row"><div class="wallet-main"><strong>XRP</strong><span class="wallet-address">rP43SsrkhPkxTsFohMAm32sAQg7vqwmDpr</span></div><button class="copy-btn" type="button" data-copy="rP43SsrkhPkxTsFohMAm32sAQg7vqwmDpr" data-i18n="copy">Copy</button></div>
+          <div class="wallet-row"><div class="wallet-main"><strong>SOL</strong><span class="wallet-address">8xkdVTEaDGuWu4aE3HpEx8r9Aux98JZbdsMiDQvJWBWR</span></div><button class="copy-btn" type="button" data-copy="8xkdVTEaDGuWu4aE3HpEx8r9Aux98JZbdsMiDQvJWBWR" data-i18n="copy">Copy</button></div>
+          <div class="wallet-row"><div class="wallet-main"><strong>DOGE</strong><span class="wallet-address">DGAT32ku8WmFaTDxCgVuRuVpUFmfdmD5Jb</span></div><button class="copy-btn" type="button" data-copy="DGAT32ku8WmFaTDxCgVuRuVpUFmfdmD5Jb" data-i18n="copy">Copy</button></div>
+          <div class="wallet-row"><div class="wallet-main"><strong>XLM</strong><span class="wallet-address">GCYH4OD4I2GNRKFFOYROE3N3S2HCT5RXIML3TZV5DP3TLTLXPXQXIJZ3</span></div><button class="copy-btn" type="button" data-copy="GCYH4OD4I2GNRKFFOYROE3N3S2HCT5RXIML3TZV5DP3TLTLXPXQXIJZ3" data-i18n="copy">Copy</button></div>
+          <div class="wallet-row"><div class="wallet-main"><strong>LTC</strong><span class="wallet-address">LWtaFniqdYpv2xJtqo9WqDwCsQ2cW6PYWi</span></div><button class="copy-btn" type="button" data-copy="LWtaFniqdYpv2xJtqo9WqDwCsQ2cW6PYWi" data-i18n="copy">Copy</button></div>
+          <div class="wallet-row"><div class="wallet-main"><strong>RVN</strong><span class="wallet-address">RAtXzKZyB3awfq2u2cK8YppC9kJamU5tPQ</span></div><button class="copy-btn" type="button" data-copy="RAtXzKZyB3awfq2u2cK8YppC9kJamU5tPQ" data-i18n="copy">Copy</button></div>
+        </div>
       </div>
     </div>
   </div>
@@ -698,6 +824,7 @@
         cancel: 'Cancel', youWin: 'You found all pairs!', greatJob: 'Great job — your memory workout is complete.', saved: 'Game saved. You can continue later.',
         discarded: 'Current game discarded.', resumed: 'Saved game resumed.', noSavedGame: 'No saved game found.', bestNew: 'New best result!',
         savedGame: 'Saved game: {category} • {difficulty} • {matches}/{pairs} matches', pairs: 'pairs',
+        infoKicker: 'Info | Support', supportProject: 'Support the project', donationIntro: 'The application is free to use, but donations are welcome.', donationCharity: 'A part of the received donations will be forwarded to various charitable organizations. The largest part will be donated to institutions caring for children without adequate parental care.', donateVia: 'You can make donations through:', paypalDesc: 'Pay securely with PayPal or other payment methods offered by PayPal Checkout.', stripeDesc: 'Pay securely by card or with payment methods available through Stripe Checkout.', debitCredit: 'Debit / credit card', digitalWallets: 'Digital wallets', donatePaypal: 'Donate with PayPal ↗', donateStripe: 'Donate with Stripe ↗', paymentAvailability: 'Available payment methods may vary depending on your country, device and payment provider.', cryptoTitle: 'Crypto wallet', cryptoDesc: 'You can also support the project with cryptocurrency.', copy: 'Copy', copied: 'Copied', fullscreenUnavailable: 'Fullscreen is not available in this browser.', cardHidden: 'Hidden memory card', cardRevealed: 'Revealed card: {symbol}', cardMatched: 'Matched card: {symbol}',
         instructions: `
           <h3>Goal</h3><p>Find all matching card pairs using as few moves and as little time as possible.</p>
           <h3>How to play</h3><ul><li>Choose a section such as Brain, Daily, Kids, Animals, Food or Travel.</li><li>Choose a difficulty. Higher levels contain more pairs.</li><li>Select two cards. If they match, they stay open. If they do not match, they turn back over.</li><li>The game ends when all pairs are found.</li></ul>
@@ -713,6 +840,7 @@
         cancel: 'Odustani', youWin: 'Pronašli ste sve parove!', greatJob: 'Odlično — vježba pamćenja je završena.', saved: 'Igra je spremljena. Možete nastaviti kasnije.',
         discarded: 'Trenutna igra je odbačena.', resumed: 'Spremljena igra je nastavljena.', noSavedGame: 'Nema spremljene igre.', bestNew: 'Novi najbolji rezultat!',
         savedGame: 'Spremljena igra: {category} • {difficulty} • {matches}/{pairs} parova', pairs: 'parova',
+        infoKicker: 'Info | Podrška', supportProject: 'Podržite projekt', donationIntro: 'Aplikacija je besplatna za korištenje, ali dobrovoljne donacije su dobrodošle.', donationCharity: 'Dio primljenih donacija proslijedit će se različitim humanitarnim organizacijama. Najveći dio bit će doniran ustanovama koje se skrbe o djeci bez odgovarajuće roditeljske skrbi.', donateVia: 'Donirati možete putem:', paypalDesc: 'Platite sigurno putem PayPala ili drugim načinima plaćanja koje nudi PayPal Checkout.', stripeDesc: 'Platite sigurno karticom ili načinima plaćanja dostupnima putem Stripe Checkouta.', debitCredit: 'Debitna / kreditna kartica', digitalWallets: 'Digitalni novčanici', donatePaypal: 'Doniraj putem PayPala ↗', donateStripe: 'Doniraj putem Stripea ↗', paymentAvailability: 'Dostupni načini plaćanja mogu se razlikovati ovisno o državi, uređaju i pružatelju plaćanja.', cryptoTitle: 'Kripto novčanik', cryptoDesc: 'Projekt možete podržati i kriptovalutama.', copy: 'Kopiraj', copied: 'Kopirano', fullscreenUnavailable: 'Puni zaslon nije dostupan u ovom pregledniku.', cardHidden: 'Skrivena karta za pamćenje', cardRevealed: 'Otvorena karta: {symbol}', cardMatched: 'Pronađena karta: {symbol}',
         instructions: `
           <h3>Cilj</h3><p>Pronađite sve jednake parove karata uz što manje poteza i u što kraćem vremenu.</p>
           <h3>Kako igrati</h3><ul><li>Odaberite sekciju: Mozak, Svakodnevno, Djeca, Životinje, Hrana ili Putovanja.</li><li>Odaberite težinu. Više razine imaju više parova.</li><li>Otvorite dvije karte. Ako su jednake, ostaju otvorene. Ako nisu, ponovno se zatvaraju.</li><li>Igra završava kada pronađete sve parove.</li></ul>
@@ -728,6 +856,7 @@
         cancel: 'Abbrechen', youWin: 'Du hast alle Paare gefunden!', greatJob: 'Sehr gut — dein Gedächtnistraining ist abgeschlossen.', saved: 'Spiel gespeichert. Du kannst später weiterspielen.',
         discarded: 'Aktuelles Spiel verworfen.', resumed: 'Gespeichertes Spiel fortgesetzt.', noSavedGame: 'Kein gespeichertes Spiel gefunden.', bestNew: 'Neuer Bestwert!',
         savedGame: 'Gespeichertes Spiel: {category} • {difficulty} • {matches}/{pairs} Paare', pairs: 'Paare',
+        infoKicker: 'Info | Unterstützung', supportProject: 'Projekt unterstützen', donationIntro: 'Die Anwendung ist kostenlos nutzbar, freiwillige Spenden sind jedoch willkommen.', donationCharity: 'Ein Teil der eingegangenen Spenden wird an verschiedene gemeinnützige Organisationen weitergeleitet. Der größte Teil wird Einrichtungen zugutekommen, die Kinder ohne angemessene elterliche Betreuung versorgen.', donateVia: 'Spenden sind möglich über:', paypalDesc: 'Sicher über PayPal oder andere von PayPal Checkout angebotene Zahlungsmethoden bezahlen.', stripeDesc: 'Sicher per Karte oder mit den über Stripe Checkout verfügbaren Zahlungsmethoden bezahlen.', debitCredit: 'Debit- / Kreditkarte', digitalWallets: 'Digitale Wallets', donatePaypal: 'Mit PayPal spenden ↗', donateStripe: 'Mit Stripe spenden ↗', paymentAvailability: 'Verfügbare Zahlungsmethoden können je nach Land, Gerät und Zahlungsanbieter variieren.', cryptoTitle: 'Krypto-Wallet', cryptoDesc: 'Du kannst das Projekt auch mit Kryptowährungen unterstützen.', copy: 'Kopieren', copied: 'Kopiert', fullscreenUnavailable: 'Der Vollbildmodus ist in diesem Browser nicht verfügbar.', cardHidden: 'Verdeckte Memory-Karte', cardRevealed: 'Aufgedeckte Karte: {symbol}', cardMatched: 'Gefundene Karte: {symbol}',
         instructions: `
           <h3>Ziel</h3><p>Finde alle passenden Kartenpaare mit möglichst wenigen Zügen und in möglichst kurzer Zeit.</p>
           <h3>So wird gespielt</h3><ul><li>Wähle einen Bereich: Gehirn, Alltag, Kinder, Tiere, Essen oder Reisen.</li><li>Wähle eine Schwierigkeit. Höhere Stufen enthalten mehr Paare.</li><li>Öffne zwei Karten. Sind sie gleich, bleiben sie offen. Sind sie verschieden, werden sie wieder verdeckt.</li><li>Das Spiel endet, sobald alle Paare gefunden wurden.</li></ul>
@@ -743,6 +872,7 @@
         cancel: 'Annulla', youWin: 'Hai trovato tutte le coppie!', greatJob: 'Ottimo lavoro — allenamento della memoria completato.', saved: 'Partita salvata. Puoi continuare più tardi.',
         discarded: 'Partita corrente eliminata.', resumed: 'Partita salvata ripresa.', noSavedGame: 'Nessuna partita salvata trovata.', bestNew: 'Nuovo record!',
         savedGame: 'Partita salvata: {category} • {difficulty} • {matches}/{pairs} coppie', pairs: 'coppie',
+        infoKicker: 'Info | Supporto', supportProject: 'Sostieni il progetto', donationIntro: 'L’applicazione è gratuita, ma le donazioni volontarie sono benvenute.', donationCharity: 'Una parte delle donazioni ricevute sarà destinata a varie organizzazioni benefiche. La parte più consistente sarà donata a strutture che si occupano di bambini privi di un’adeguata assistenza genitoriale.', donateVia: 'Puoi donare tramite:', paypalDesc: 'Paga in modo sicuro con PayPal o con gli altri metodi di pagamento offerti da PayPal Checkout.', stripeDesc: 'Paga in modo sicuro con carta o con i metodi disponibili tramite Stripe Checkout.', debitCredit: 'Carta di debito / credito', digitalWallets: 'Portafogli digitali', donatePaypal: 'Dona con PayPal ↗', donateStripe: 'Dona con Stripe ↗', paymentAvailability: 'I metodi di pagamento disponibili possono variare in base al paese, al dispositivo e al fornitore di pagamento.', cryptoTitle: 'Portafoglio crypto', cryptoDesc: 'Puoi sostenere il progetto anche con criptovalute.', copy: 'Copia', copied: 'Copiato', fullscreenUnavailable: 'La modalità schermo intero non è disponibile in questo browser.', cardHidden: 'Carta Memory coperta', cardRevealed: 'Carta scoperta: {symbol}', cardMatched: 'Carta abbinata: {symbol}',
         instructions: `
           <h3>Obiettivo</h3><p>Trova tutte le coppie di carte uguali con il minor numero possibile di mosse e nel minor tempo possibile.</p>
           <h3>Come giocare</h3><ul><li>Scegli una sezione: Mente, Quotidiano, Bambini, Animali, Cibo o Viaggi.</li><li>Scegli la difficoltà. I livelli più alti contengono più coppie.</li><li>Apri due carte. Se sono uguali restano scoperte; se sono diverse si girano di nuovo.</li><li>La partita termina quando trovi tutte le coppie.</li></ul>
@@ -758,6 +888,7 @@
         cancel: 'Cancelar', youWin: '¡Has encontrado todas las parejas!', greatJob: 'Buen trabajo — entrenamiento de memoria completado.', saved: 'Partida guardada. Puedes continuar más tarde.',
         discarded: 'Partida actual descartada.', resumed: 'Partida guardada reanudada.', noSavedGame: 'No hay ninguna partida guardada.', bestNew: '¡Nuevo mejor resultado!',
         savedGame: 'Partida guardada: {category} • {difficulty} • {matches}/{pairs} parejas', pairs: 'parejas',
+        infoKicker: 'Info | Apoyo', supportProject: 'Apoya el proyecto', donationIntro: 'La aplicación es gratuita, pero las donaciones voluntarias son bienvenidas.', donationCharity: 'Una parte de las donaciones recibidas se destinará a distintas organizaciones benéficas. La mayor parte se donará a instituciones que atienden a niños sin una atención parental adecuada.', donateVia: 'Puedes donar mediante:', paypalDesc: 'Paga de forma segura con PayPal u otros métodos de pago ofrecidos por PayPal Checkout.', stripeDesc: 'Paga de forma segura con tarjeta o con los métodos disponibles mediante Stripe Checkout.', debitCredit: 'Tarjeta de débito / crédito', digitalWallets: 'Carteras digitales', donatePaypal: 'Donar con PayPal ↗', donateStripe: 'Donar con Stripe ↗', paymentAvailability: 'Los métodos de pago disponibles pueden variar según el país, el dispositivo y el proveedor de pagos.', cryptoTitle: 'Cartera crypto', cryptoDesc: 'También puedes apoyar el proyecto con criptomonedas.', copy: 'Copiar', copied: 'Copiado', fullscreenUnavailable: 'La pantalla completa no está disponible en este navegador.', cardHidden: 'Carta de memoria oculta', cardRevealed: 'Carta revelada: {symbol}', cardMatched: 'Carta emparejada: {symbol}',
         instructions: `
           <h3>Objetivo</h3><p>Encuentra todas las parejas de cartas iguales con el menor número de movimientos y en el menor tiempo posible.</p>
           <h3>Cómo jugar</h3><ul><li>Elige una sección: Mente, Diario, Niños, Animales, Comida o Viajes.</li><li>Elige la dificultad. Los niveles más altos tienen más parejas.</li><li>Abre dos cartas. Si coinciden, permanecen abiertas; si no coinciden, vuelven a girarse.</li><li>La partida termina cuando encuentras todas las parejas.</li></ul>
@@ -778,21 +909,32 @@
       running: false,
       lock: false,
       timerId: null,
-      lastTick: null
+      pairTimerId: null,
+      lastTick: null,
+      elapsedRemainderMs: 0
     };
 
     const $ = (id) => document.getElementById(id);
 
-    // Persistent storage with an in-memory fallback for privacy-restricted browser contexts.
+    // Persistent storage with an in-memory fallback for privacy-restricted or full-storage contexts.
+    // Fallback values take priority so a failed localStorage write can never expose stale data.
     const memoryStorage = new Map();
     function storageGet(key) {
-      try { return localStorage.getItem(key); } catch { return memoryStorage.has(key) ? memoryStorage.get(key) : null; }
+      if (memoryStorage.has(key)) return memoryStorage.get(key);
+      try { return localStorage.getItem(key); } catch { return null; }
     }
     function storageSet(key, value) {
-      try { localStorage.setItem(key, value); } catch { memoryStorage.set(key, String(value)); }
+      const normalized = String(value);
+      try {
+        localStorage.setItem(key, normalized);
+        memoryStorage.delete(key);
+      } catch {
+        memoryStorage.set(key, normalized);
+      }
     }
     function storageRemove(key) {
-      try { localStorage.removeItem(key); } catch { memoryStorage.delete(key); }
+      memoryStorage.delete(key);
+      try { localStorage.removeItem(key); } catch {}
     }
 
     const homeScreen = $('homeScreen');
@@ -839,6 +981,7 @@
       renderDifficulties();
       updateSavedGameBanner();
       updateGameLabels();
+      if (state.board.length) updateCardClasses();
       saveSettings();
     }
 
@@ -895,6 +1038,9 @@
     }
 
     function startGame({ fromSaved = false } = {}) {
+      closeAllModals({ restoreFocus: false });
+      lastModalTrigger = null;
+      cancelPendingPairResolution();
       stopTimer();
       if (!fromSaved) {
         state.board = buildBoard(state.category, state.difficulty);
@@ -902,6 +1048,7 @@
         state.matchedIds = [];
         state.moves = 0;
         state.elapsed = 0;
+        state.elapsedRemainderMs = 0;
         state.lock = false;
       }
       showScreen('game');
@@ -909,6 +1056,19 @@
       updateStats();
       updateGameLabels();
       startTimer();
+    }
+
+    function updateCardAccessibility(btn, card) {
+      const matched = state.matchedIds.includes(card.id);
+      const revealed = state.flipped.includes(card.id) || matched;
+      if (matched) {
+        btn.setAttribute('aria-label', formatTemplate(t('cardMatched'), { symbol: card.symbol }));
+      } else if (revealed) {
+        btn.setAttribute('aria-label', formatTemplate(t('cardRevealed'), { symbol: card.symbol }));
+      } else {
+        btn.setAttribute('aria-label', t('cardHidden'));
+      }
+      btn.disabled = matched;
     }
 
     function renderBoard() {
@@ -923,11 +1083,11 @@
         btn.className = 'memory-card';
         btn.dataset.id = card.id;
         btn.dataset.pair = card.pair;
-        btn.setAttribute('aria-label', 'Memory card');
         const isMatched = state.matchedIds.includes(card.id);
         const isFlipped = state.flipped.includes(card.id);
         if (isMatched) btn.classList.add('matched', 'locked');
         if (isFlipped) btn.classList.add('flipped');
+        updateCardAccessibility(btn, card);
         btn.innerHTML = `<span class="card-inner"><span class="card-face card-back"></span><span class="card-face card-front">${card.symbol}</span></span>`;
         btn.addEventListener('click', () => handleCardClick(card.id));
         boardEl.appendChild(btn);
@@ -953,7 +1113,18 @@
         const matched = state.matchedIds.includes(id);
         btn.classList.toggle('matched', matched);
         btn.classList.toggle('locked', matched);
+        const card = state.board.find(item => item.id === id);
+        if (card) updateCardAccessibility(btn, card);
       });
+    }
+
+    function cancelPendingPairResolution() {
+      if (state.pairTimerId !== null) {
+        clearTimeout(state.pairTimerId);
+        state.pairTimerId = null;
+      }
+      state.flipped = [];
+      state.lock = false;
     }
 
     function evaluatePair() {
@@ -963,7 +1134,8 @@
       if (!a || !b) return;
       state.lock = true;
       if (a.pair === b.pair) {
-        setTimeout(() => {
+        state.pairTimerId = setTimeout(() => {
+          state.pairTimerId = null;
           state.matchedIds.push(aId, bId);
           state.flipped = [];
           state.lock = false;
@@ -972,7 +1144,8 @@
           if (state.matchedIds.length === state.board.length) completeGame();
         }, 330);
       } else {
-        setTimeout(() => {
+        state.pairTimerId = setTimeout(() => {
+          state.pairTimerId = null;
           state.flipped = [];
           state.lock = false;
           updateCardClasses();
@@ -996,25 +1169,32 @@
       updateStats();
     }
 
+    function syncElapsedTime(now = Date.now()) {
+      if (!state.running || state.lastTick === null) return;
+      const deltaMs = Math.max(0, now - state.lastTick);
+      const totalMs = state.elapsedRemainderMs + deltaMs;
+      const wholeSeconds = Math.floor(totalMs / 1000);
+      state.elapsedRemainderMs = totalMs - wholeSeconds * 1000;
+      state.lastTick = now;
+      if (wholeSeconds > 0) {
+        state.elapsed += wholeSeconds;
+        $('timeValue').textContent = formatTime(state.elapsed);
+      }
+    }
+
     function startTimer() {
       stopTimer();
       state.running = true;
       state.lastTick = Date.now();
-      state.timerId = setInterval(() => {
-        const now = Date.now();
-        const delta = Math.floor((now - state.lastTick) / 1000);
-        if (delta > 0) {
-          state.elapsed += delta;
-          state.lastTick += delta * 1000;
-          $('timeValue').textContent = formatTime(state.elapsed);
-        }
-      }, 500);
+      state.timerId = setInterval(() => syncElapsedTime(), 250);
     }
 
     function stopTimer() {
+      if (state.running) syncElapsedTime();
       if (state.timerId) clearInterval(state.timerId);
       state.timerId = null;
       state.running = false;
+      state.lastTick = null;
     }
 
     function formatTime(seconds) {
@@ -1032,6 +1212,7 @@
         matchedIds: state.matchedIds,
         moves: state.moves,
         elapsed: state.elapsed,
+        elapsedRemainderMs: state.elapsedRemainderMs,
         savedAt: Date.now()
       };
       storageSet(STORAGE_GAME, JSON.stringify(payload));
@@ -1054,8 +1235,11 @@
       state.flipped = [];
       state.moves = Number(game.moves) || 0;
       state.elapsed = Number(game.elapsed) || 0;
+      state.elapsedRemainderMs = Math.min(999, Math.max(0, Number(game.elapsedRemainderMs) || 0));
       state.lock = false;
       saveSettings();
+      renderCategories();
+      renderDifficulties();
       startGame({ fromSaved: true });
       toast(t('resumed'));
     }
@@ -1123,13 +1307,62 @@
       gameScreen.classList.toggle('active', game);
       if (!game) {
         stopTimer();
+        renderCategories();
+        renderDifficulties();
         updateSavedGameBanner();
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function openModal(id) { $(id).classList.add('show'); }
-    function closeModal(id) { $(id).classList.remove('show'); }
+    const appRoot = document.querySelector('.app');
+    let lastModalTrigger = null;
+
+    function modalFocusable(modal) {
+      return [...modal.querySelectorAll('button:not([disabled]), a[href], select:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+        .filter(el => !el.hidden && el.getClientRects().length > 0);
+    }
+
+    function closeAllModals({ restoreFocus = false } = {}) {
+      document.querySelectorAll('.modal.show').forEach(modal => modal.classList.remove('show'));
+      appRoot.inert = false;
+      if (restoreFocus && lastModalTrigger && lastModalTrigger.isConnected && !lastModalTrigger.disabled) {
+        lastModalTrigger.focus();
+      }
+      if (restoreFocus) lastModalTrigger = null;
+    }
+
+    function openModal(id) {
+      const modal = $(id);
+      if (!modal) return;
+      const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      if (active && !active.closest('.modal')) lastModalTrigger = active;
+      // Only one dialog may be active at a time. This also prevents an async
+      // win dialog from leaving an earlier confirmation dialog over the next game.
+      closeAllModals({ restoreFocus: false });
+      modal.classList.add('show');
+      appRoot.inert = true;
+      requestAnimationFrame(() => {
+        const focusable = modalFocusable(modal);
+        if (focusable.length) focusable[0].focus();
+        else {
+          modal.tabIndex = -1;
+          modal.focus();
+        }
+      });
+    }
+
+    function closeModal(id) {
+      const modal = $(id);
+      if (!modal) return;
+      modal.classList.remove('show');
+      if (!document.querySelector('.modal.show')) {
+        appRoot.inert = false;
+        if (lastModalTrigger && lastModalTrigger.isConnected && !lastModalTrigger.disabled) {
+          lastModalTrigger.focus();
+        }
+        lastModalTrigger = null;
+      }
+    }
 
     let toastTimer;
     function toast(message) {
@@ -1145,11 +1378,12 @@
         if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
         else await document.exitFullscreen();
       } catch {
-        toast('Fullscreen is not available in this browser.');
+        toast(t('fullscreenUnavailable'));
       }
     }
 
     function saveAndExit() {
+      cancelPendingPairResolution();
       stopTimer();
       saveCurrentGame();
       showScreen('home');
@@ -1158,6 +1392,7 @@
 
     function exitWithoutSave() {
       closeModal('confirmModal');
+      cancelPendingPairResolution();
       stopTimer();
       storageRemove(STORAGE_GAME);
       state.board = [];
@@ -1165,6 +1400,7 @@
       state.matchedIds = [];
       state.moves = 0;
       state.elapsed = 0;
+      state.elapsedRemainderMs = 0;
       state.lock = false;
       showScreen('home');
       toast(t('discarded'));
@@ -1199,14 +1435,59 @@
       btn.addEventListener('click', () => closeModal(btn.dataset.close));
     });
 
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'fixed';
+        area.style.opacity = '0';
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand('copy');
+        area.remove();
+      }
+      toast(t('copied'));
+    }
+
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', () => copyText(btn.dataset.copy));
+    });
+
     document.querySelectorAll('.modal').forEach(modal => {
       modal.addEventListener('click', e => { if (e.target === modal && modal.id !== 'winModal') closeModal(modal.id); });
     });
 
     document.addEventListener('keydown', e => {
+      const open = [...document.querySelectorAll('.modal.show')].pop();
+      if (!open) return;
+
       if (e.key === 'Escape') {
-        const open = [...document.querySelectorAll('.modal.show')].pop();
-        if (open && open.id !== 'winModal') closeModal(open.id);
+        if (open.id !== 'winModal') closeModal(open.id);
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const focusable = modalFocusable(open);
+        if (!focusable.length) {
+          e.preventDefault();
+          open.focus();
+          return;
+        }
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        } else if (!open.contains(document.activeElement)) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     });
 
