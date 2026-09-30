@@ -135,6 +135,8 @@
     html[data-theme="light"] .wallet-address,
     html[data-theme="light"] .payment-tag { color: #506481; }
     html[data-theme="light"] .copy-btn { color:#164a60;background:rgba(49,191,233,.10); }
+    html[data-theme="light"] .btn.danger { color:#8e243e; }
+    html[data-theme="light"] .dialog-body a { color:#066787; }
     html[data-theme="light"] .saved-banner { color:#155d3d;background:rgba(19,120,73,.08); }
     html[data-theme="light"] .toast { background:#fff;color:var(--text); }
     html[data-theme="light"] .footer { color:rgba(22,34,59,.52); }
@@ -1637,6 +1639,7 @@
       cancelPendingPairResolution();
       stopTimer();
       if (!saveCurrentGame()) {
+        updateCardClasses();
         startTimer();
         toast(t('saveFailed'));
         return;
