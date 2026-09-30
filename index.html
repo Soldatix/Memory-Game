@@ -6,6 +6,8 @@
   <meta name="theme-color" content="#10182f" />
   <title>Memory Game — Free Matching Pairs Game | Apps & Games</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="application-name" content="Memory Game" />
   <meta name="description" content="Play Memory Game, a free multilingual matching-pairs browser game with six themes, four difficulty levels, saved progress, fullscreen and best scores." />
   <meta name="keywords" content="memory game, matching pairs, matching game, brain game, memory puzzle, concentration game, kids memory game, free browser game, Apps & Games" />
   <meta name="author" content="Soldatix" />
@@ -32,6 +34,7 @@
     "name": "Memory Game",
     "url": "https://memory.appsandgames.org/",
     "description": "A free multilingual browser memory game with themed matching pairs, four difficulty levels, saved progress and best scores.",
+    "image": "https://appsandgames.org/assets/images/memory-game-cover.svg",
     "gamePlatform": "Web browser",
     "operatingSystem": "Any",
     "isAccessibleForFree": true,
@@ -61,6 +64,9 @@
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6296601518048221" crossorigin="anonymous"></script>
 
+  <script src="ag-language-menu.js" defer></script>
+  <script src="pwa.js" defer></script>
+
   <style>
     :root {
       --bg: #09111f;
@@ -76,6 +82,99 @@
       --shadow: 0 18px 55px rgba(0,0,0,.35);
       --radius: 22px;
       --card-radius: 16px;
+    }
+
+    html { color-scheme: dark; }
+    :root {
+      --control-bg: rgba(255,255,255,.07);
+      --control-hover: rgba(255,255,255,.12);
+      --control-selected: rgba(104,216,255,.16);
+    }
+    html[data-theme="light"] {
+      color-scheme: light;
+      --bg: #edf3fb;
+      --panel: rgba(255,255,255,.90);
+      --panel-2: #ffffff;
+      --text: #16223b;
+      --muted: #60708e;
+      --accent: #087fa9;
+      --accent-2: #6650dc;
+      --good: #137849;
+      --danger: #bd3652;
+      --border: rgba(20,38,70,.14);
+      --shadow: 0 18px 55px rgba(43,64,98,.15);
+      --control-bg: rgba(20,38,70,.06);
+      --control-hover: rgba(20,38,70,.10);
+      --control-selected: rgba(49,191,233,.14);
+    }
+    html[data-theme="light"] body {
+      background:
+        radial-gradient(circle at 12% 12%, rgba(49,191,233,.13), transparent 28%),
+        radial-gradient(circle at 88% 14%, rgba(120,105,245,.12), transparent 28%),
+        linear-gradient(160deg, #f7fbff 0%, #eef4fb 48%, #e8eef9 100%);
+    }
+    html[data-theme="light"] .hero h1 {
+      background: linear-gradient(90deg, #15233d, #087fa9 48%, #6650dc);
+      -webkit-background-clip:text;
+    }
+    html[data-theme="light"] select,
+    html[data-theme="light"] .icon-btn,
+    html[data-theme="light"] .btn.secondary,
+    html[data-theme="light"] .category-card,
+    html[data-theme="light"] .difficulty,
+    html[data-theme="light"] .stat,
+    html[data-theme="light"] .payment-card,
+    html[data-theme="light"] .wallet-row,
+    html[data-theme="light"] .win-stats div { background: var(--control-bg); }
+    html[data-theme="light"] .category-card:hover,
+    html[data-theme="light"] .icon-btn:hover { background: var(--control-hover); }
+    html[data-theme="light"] .board-wrap { background: rgba(206,220,241,.58); }
+    html[data-theme="light"] .card-back { background: linear-gradient(145deg,#e1edf9,#ccd9ed); }
+    html[data-theme="light"] .dialog-body { color: var(--text); }
+    html[data-theme="light"] .wallet-main strong { color: var(--text); }
+    html[data-theme="light"] .wallet-address,
+    html[data-theme="light"] .payment-tag { color: #506481; }
+    html[data-theme="light"] .copy-btn { color:#164a60;background:rgba(49,191,233,.10); }
+    html[data-theme="light"] .btn.danger { color:#8e243e; }
+    html[data-theme="light"] .dialog-body a { color:#066787; }
+    html[data-theme="light"] .saved-banner { color:#155d3d;background:rgba(19,120,73,.08); }
+    html[data-theme="light"] .toast { background:#fff;color:var(--text); }
+    html[data-theme="light"] .footer { color:rgba(22,34,59,.52); }
+    button:focus-visible, select:focus-visible, a:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+    #themeSelect { min-width: 104px; width:auto; }
+    .info-summary {
+      margin: 0 0 18px;
+      padding: 16px;
+      border-radius: 16px;
+      background: var(--control-bg);
+      border: 1px solid var(--border);
+    }
+    .info-summary .info-lead { margin:0 0 12px; color:var(--text); font-weight:700; }
+    .info-meta { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 14px; }
+    .info-chip {
+      padding:5px 9px;
+      border-radius:999px;
+      background:var(--control-bg);
+      border:1px solid var(--border);
+      color:var(--muted);
+      font-size:.78rem;
+      font-weight:800;
+    }
+    .info-features { margin:0 0 12px; padding-left:20px; color:var(--muted); }
+    .info-portal-link {
+      display:inline-flex;
+      min-height:40px;
+      align-items:center;
+      color:var(--accent);
+      font-weight:850;
+      text-decoration:none;
+    }
+    .info-portal-link:hover { text-decoration:underline; }
+    @media (max-width: 520px) {
+      #themeSelect { max-width:100px; min-width:0; }
     }
 
     * { box-sizing: border-box; }
@@ -626,12 +725,17 @@
         </div>
       </div>
       <div class="top-actions">
-        <select id="languageSelect" aria-label="Language">
+        <select id="languageSelect" data-ag-language-menu aria-label="Language">
           <option value="en">English</option>
           <option value="hr">Hrvatski</option>
           <option value="de">Deutsch</option>
           <option value="it">Italiano</option>
           <option value="es">Español</option>
+        </select>
+        <select id="themeSelect" aria-label="Theme">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="system">System</option>
         </select>
         <button class="icon-btn" id="readmeBtn" type="button" title="How to play" aria-label="How to play">📖</button>
         <button class="icon-btn" id="infoBtn" type="button" title="Info" aria-label="Info">ℹ️</button>
@@ -721,12 +825,20 @@
       <div class="dialog-head">
         <div>
           <div class="support-kicker" data-i18n="infoKicker">Info | Support</div>
-          <h2 id="infoTitle" data-i18n="supportProject">Support the project</h2>
+          <h2 id="infoTitle" data-i18n="infoTitle">Info &amp; Support</h2>
           <p>Apps &amp; Games</p>
         </div>
         <button class="icon-btn dialog-close" data-close="infoModal" type="button" aria-label="Close">✕</button>
       </div>
       <div class="dialog-body">
+        <section class="info-summary">
+          <p class="info-lead" data-i18n="infoLead">Memory Game is a free matching-pairs browser game with six themes, four difficulty levels, saved progress and five interface languages.</p>
+          <div class="info-meta"><span class="info-chip"><span data-i18n="versionLabel">Version</span> 2026.09.29</span><span class="info-chip" data-i18n="freeLabel">Free</span><span class="info-chip">Apps &amp; Games</span></div>
+          <h3 data-i18n="featuresTitle">Key features</h3>
+          <ul class="info-features"><li data-i18n="featureThemes">Six themed card sets and four difficulty levels</li><li data-i18n="featureSave">Local Save &amp; Exit, resume and best results</li><li data-i18n="featureAccess">Keyboard-friendly cards, dialogs and fullscreen support</li></ul>
+          <p data-i18n="privacyText">Settings, saved progress and best results stay in this browser on this device. No Apps &amp; Games account is required.</p>
+          <a class="info-portal-link" href="https://appsandgames.org/" target="_blank" rel="noopener noreferrer" data-i18n="visitPortal">Visit Apps &amp; Games ↗</a>
+        </section>
         <p class="support-intro" data-i18n="donationIntro">The application is free to use, but donations are welcome.</p>
         <p class="support-intro" data-i18n="donationCharity">A part of the received donations will be forwarded to various charitable organizations. The largest part will be donated to institutions caring for children without adequate parental care.</p>
         <h3 data-i18n="donateVia">You can make donations through:</h3>
@@ -952,8 +1064,18 @@
       }
     };
 
+    const standardCopy = {
+      en:{language:'Language',theme:'Theme',themeDark:'Dark',themeLight:'Light',themeSystem:'System',infoTitle:'Info & Support',infoLead:'Memory Game is a free matching-pairs browser game with six themes, four difficulty levels, saved progress and five interface languages.',versionLabel:'Version',freeLabel:'Free',featuresTitle:'Key features',featureThemes:'Six themed card sets and four difficulty levels',featureSave:'Local Save & Exit, resume and best results',featureAccess:'Keyboard-friendly cards, dialogs and fullscreen support',privacyText:'Settings, saved progress and best results stay in this browser on this device. No Apps & Games account is required.',visitPortal:'Visit Apps & Games ↗',close:'Close',fullscreen:'Fullscreen',boardLabel:'Memory game board',saveFailed:'Saving is unavailable. Your current game is still open.'},
+      hr:{language:'Jezik',theme:'Tema',themeDark:'Tamna',themeLight:'Svijetla',themeSystem:'Sustav',infoTitle:'Info i podrška',infoLead:'Memory Game je besplatna igra spajanja parova sa šest tema, četiri razine težine, spremanjem napretka i pet jezika sučelja.',versionLabel:'Verzija',freeLabel:'Besplatno',featuresTitle:'Glavne funkcije',featureThemes:'Šest tematskih setova karata i četiri razine težine',featureSave:'Lokalno Spremi i izađi, nastavak igre i najbolji rezultati',featureAccess:'Karte prilagođene tipkovnici, pristupačni dijalozi i puni zaslon',privacyText:'Postavke, spremljeni napredak i najbolji rezultati ostaju u ovom pregledniku na ovom uređaju. Apps & Games račun nije potreban.',visitPortal:'Posjeti Apps & Games ↗',close:'Zatvori',fullscreen:'Puni zaslon',boardLabel:'Ploča Memory igre',saveFailed:'Spremanje nije dostupno. Trenutna igra je i dalje otvorena.'},
+      de:{language:'Sprache',theme:'Design',themeDark:'Dunkel',themeLight:'Hell',themeSystem:'System',infoTitle:'Info & Unterstützung',infoLead:'Memory Game ist ein kostenloses Kartenpaar-Spiel mit sechs Themen, vier Schwierigkeitsstufen, gespeichertem Fortschritt und fünf Oberflächensprachen.',versionLabel:'Version',freeLabel:'Kostenlos',featuresTitle:'Hauptfunktionen',featureThemes:'Sechs Kartenthemen und vier Schwierigkeitsstufen',featureSave:'Lokales Speichern/Beenden, Fortsetzen und Bestwerte',featureAccess:'Tastaturfreundliche Karten, zugängliche Dialoge und Vollbild',privacyText:'Einstellungen, Spielstand und Bestwerte bleiben in diesem Browser auf diesem Gerät. Ein Apps-&-Games-Konto ist nicht erforderlich.',visitPortal:'Apps & Games besuchen ↗',close:'Schließen',fullscreen:'Vollbild',boardLabel:'Memory-Spielfeld',saveFailed:'Speichern ist nicht verfügbar. Das aktuelle Spiel bleibt geöffnet.'},
+      it:{language:'Lingua',theme:'Tema',themeDark:'Scuro',themeLight:'Chiaro',themeSystem:'Sistema',infoTitle:'Info e supporto',infoLead:'Memory Game è un gioco gratuito di coppie con sei temi, quattro livelli di difficoltà, progressi salvati e cinque lingue dell’interfaccia.',versionLabel:'Versione',freeLabel:'Gratis',featuresTitle:'Funzioni principali',featureThemes:'Sei set di carte a tema e quattro livelli di difficoltà',featureSave:'Salvataggio e uscita locale, ripresa e migliori risultati',featureAccess:'Carte accessibili da tastiera, finestre di dialogo e schermo intero',privacyText:'Impostazioni, progressi e migliori risultati restano in questo browser su questo dispositivo. Non è richiesto un account Apps & Games.',visitPortal:'Visita Apps & Games ↗',close:'Chiudi',fullscreen:'Schermo intero',boardLabel:'Tabellone Memory Game',saveFailed:'Il salvataggio non è disponibile. La partita corrente resta aperta.'},
+      es:{language:'Idioma',theme:'Tema',themeDark:'Oscuro',themeLight:'Claro',themeSystem:'Sistema',infoTitle:'Info y soporte',infoLead:'Memory Game es un juego gratuito de parejas con seis temas, cuatro niveles de dificultad, progreso guardado y cinco idiomas de interfaz.',versionLabel:'Versión',freeLabel:'Gratis',featuresTitle:'Funciones principales',featureThemes:'Seis conjuntos de cartas temáticas y cuatro niveles de dificultad',featureSave:'Guardado y salida local, reanudación y mejores resultados',featureAccess:'Cartas accesibles con teclado, diálogos accesibles y pantalla completa',privacyText:'Los ajustes, el progreso guardado y los mejores resultados permanecen en este navegador y dispositivo. No se requiere una cuenta de Apps & Games.',visitPortal:'Visitar Apps & Games ↗',close:'Cerrar',fullscreen:'Pantalla completa',boardLabel:'Tablero de Memory Game',saveFailed:'El guardado no está disponible. La partida actual sigue abierta.'}
+    };
+    Object.keys(standardCopy).forEach(lang => Object.assign(i18n[lang], standardCopy[lang]));
+
     const state = {
       language: 'en',
+      theme: 'dark',
       category: 'brain',
       difficulty: 'medium',
       board: [],
@@ -983,8 +1105,10 @@
       try {
         localStorage.setItem(key, normalized);
         memoryStorage.delete(key);
+        return true;
       } catch {
         memoryStorage.set(key, normalized);
+        return false;
       }
     }
     function storageRemove(key) {
@@ -996,6 +1120,8 @@
     const gameScreen = $('gameScreen');
     const boardEl = $('board');
     const languageSelect = $('languageSelect');
+    const themeSelect = $('themeSelect');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
     const categoryGrid = $('categoryGrid');
     const difficultyList = $('difficultyList');
 
@@ -1006,14 +1132,17 @@
     function loadSettings() {
       const saved = safeParse(storageGet(STORAGE_SETTINGS), {});
       if (saved.language && i18n[saved.language]) state.language = saved.language;
+      if (['dark','light','system'].includes(saved.theme)) state.theme = saved.theme;
       if (saved.category && categories[saved.category]) state.category = saved.category;
       if (saved.difficulty && difficulties[saved.difficulty]) state.difficulty = saved.difficulty;
       languageSelect.value = state.language;
+      themeSelect.value = state.theme;
     }
 
     function saveSettings() {
       storageSet(STORAGE_SETTINGS, JSON.stringify({
         language: state.language,
+        theme: state.theme,
         category: state.category,
         difficulty: state.difficulty
       }));
@@ -1025,13 +1154,36 @@
       return Object.entries(vars).reduce((s, [key, val]) => s.replaceAll(`{${key}}`, String(val)), str);
     }
 
+    function effectiveTheme() {
+      return state.theme === 'system' ? (systemTheme.matches ? 'dark' : 'light') : state.theme;
+    }
+
+    function applyTheme() {
+      const effective = effectiveTheme();
+      document.documentElement.dataset.theme = effective;
+      themeSelect.value = state.theme;
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.content = effective === 'light' ? '#eef4fb' : '#10182f';
+    }
+
     function applyLanguage() {
       document.documentElement.lang = state.language;
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
         if (t(key) != null) el.textContent = t(key);
       });
+      languageSelect.setAttribute('aria-label', t('language'));
+      themeSelect.setAttribute('aria-label', t('theme'));
+      themeSelect.querySelector('[value="dark"]').textContent = t('themeDark');
+      themeSelect.querySelector('[value="light"]').textContent = t('themeLight');
+      themeSelect.querySelector('[value="system"]').textContent = t('themeSystem');
+      $('readmeBtn').title = t('howToPlay'); $('readmeBtn').setAttribute('aria-label', t('howToPlay'));
+      $('infoBtn').title = t('infoTitle'); $('infoBtn').setAttribute('aria-label', t('infoTitle'));
+      $('fullscreenBtn').title = t('fullscreen'); $('fullscreenBtn').setAttribute('aria-label', t('fullscreen'));
+      document.querySelectorAll('[data-close]').forEach(btn => btn.setAttribute('aria-label', t('close')));
+      boardEl.setAttribute('aria-label', t('boardLabel'));
       $('readmeBody').innerHTML = t('instructions');
+      applyTheme();
       renderCategories();
       renderDifficulties();
       updateSavedGameBanner();
@@ -1270,13 +1422,48 @@
         elapsedRemainderMs: state.elapsedRemainderMs,
         savedAt: Date.now()
       };
-      storageSet(STORAGE_GAME, JSON.stringify(payload));
+      const persistent = storageSet(STORAGE_GAME, JSON.stringify(payload));
       updateSavedGameBanner();
+      return persistent;
+    }
+
+    function validInt(value, min, max) { return Number.isInteger(value) && value >= min && value <= max; }
+
+    function validateSavedGame(game) {
+      if (!game || typeof game !== 'object' || Array.isArray(game) || game.version !== 1) return null;
+      const cat = categories[game.category];
+      const diff = difficulties[game.difficulty];
+      if (!cat || !diff || !Array.isArray(game.board) || game.board.length !== diff.pairs * 2) return null;
+      const ids = new Set();
+      const byPair = new Map();
+      for (const card of game.board) {
+        if (!card || typeof card !== 'object' || typeof card.id !== 'string' || ids.has(card.id) ||
+            !validInt(card.pair, 0, diff.pairs - 1) || typeof card.symbol !== 'string' || !cat.items.includes(card.symbol)) return null;
+        ids.add(card.id);
+        const group = byPair.get(card.pair) || [];
+        group.push(card);
+        byPair.set(card.pair, group);
+      }
+      for (let pair = 0; pair < diff.pairs; pair++) {
+        const group = byPair.get(pair);
+        if (!group || group.length !== 2 || group[0].symbol !== group[1].symbol) return null;
+      }
+      const matchedIds = Array.isArray(game.matchedIds) ? game.matchedIds : [];
+      if (matchedIds.length % 2 || new Set(matchedIds).size !== matchedIds.length || matchedIds.some(id => !ids.has(id))) return null;
+      for (const group of byPair.values()) {
+        const count = group.filter(card => matchedIds.includes(card.id)).length;
+        if (count !== 0 && count !== 2) return null;
+      }
+      if (!validInt(Number(game.moves), 0, 1000000000) || !validInt(Number(game.elapsed), 0, 1000000000)) return null;
+      const remainder = Number(game.elapsedRemainderMs) || 0;
+      if (!Number.isFinite(remainder) || remainder < 0 || remainder > 999) return null;
+      return { ...game, matchedIds, moves:Number(game.moves), elapsed:Number(game.elapsed), elapsedRemainderMs:remainder };
     }
 
     function getSavedGame() {
-      const game = safeParse(storageGet(STORAGE_GAME), null);
-      if (!game || game.version !== 1 || !categories[game.category] || !difficulties[game.difficulty] || !Array.isArray(game.board)) return null;
+      const raw = safeParse(storageGet(STORAGE_GAME), null);
+      const game = validateSavedGame(raw);
+      if (raw && !game) storageRemove(STORAGE_GAME);
       return game;
     }
 
@@ -1335,7 +1522,18 @@
 
     function bestKey() { return `${state.category}:${state.difficulty}`; }
 
-    function getBestStore() { return safeParse(storageGet(STORAGE_BEST), {}); }
+    function getBestStore() {
+      const raw = safeParse(storageGet(STORAGE_BEST), {});
+      if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {};
+      const clean = {};
+      for (const [key, value] of Object.entries(raw)) {
+        const [category, difficulty] = key.split(':');
+        if (!categories[category] || !difficulties[difficulty] || !value || typeof value !== 'object') continue;
+        const moves = Number(value.moves), elapsed = Number(value.elapsed);
+        if (validInt(moves, 0, 1000000000) && validInt(elapsed, 0, 1000000000)) clean[key] = { moves, elapsed };
+      }
+      return clean;
+    }
 
     function updateBest() {
       const store = getBestStore();
@@ -1440,7 +1638,12 @@
     function saveAndExit() {
       cancelPendingPairResolution();
       stopTimer();
-      saveCurrentGame();
+      if (!saveCurrentGame()) {
+        updateCardClasses();
+        startTimer();
+        toast(t('saveFailed'));
+        return;
+      }
       showScreen('home');
       toast(t('saved'));
     }
@@ -1485,6 +1688,12 @@
       state.language = languageSelect.value;
       applyLanguage();
     });
+    themeSelect.addEventListener('change', () => {
+      state.theme = ['dark','light','system'].includes(themeSelect.value) ? themeSelect.value : 'dark';
+      applyTheme();
+      saveSettings();
+    });
+    systemTheme.addEventListener?.('change', () => { if (state.theme === 'system') applyTheme(); });
 
     document.querySelectorAll('[data-close]').forEach(btn => {
       btn.addEventListener('click', () => closeModal(btn.dataset.close));
