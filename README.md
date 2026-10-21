@@ -30,6 +30,13 @@ Open `index.html` in a modern browser. No build step and no external libraries a
 ### Saved settings
 The selected language, section, and difficulty are stored locally in the browser and restored at the next launch. English is the default language for first launch.
 
+
+### Credits
+
+If you use our source code to create your own version, we'd appreciate a mention in its About / Info section:
+
+**Based on Memory Game by Apps & Games — [appsandgames.org](https://appsandgames.org/)**
+
 ---
 
 ## Hrvatski
@@ -53,6 +60,13 @@ The selected language, section, and difficulty are stored locally in the browser
 
 ### Zapamćene postavke
 Odabrani jezik, sekcija i težina spremaju se lokalno u pregledniku i ponovno se učitavaju pri sljedećem pokretanju. Pri prvom pokretanju početni jezik je engleski.
+
+
+### Zasluge
+
+Ako koristiš naš izvorni kod za vlastitu verziju igre, bili bismo zahvalni da nas spomeneš u odjeljku O aplikaciji / Info:
+
+**Temeljeno na igri Memory Game autora Apps & Games — [appsandgames.org](https://appsandgames.org/)**
 
 ---
 
@@ -78,6 +92,13 @@ Odabrani jezik, sekcija i težina spremaju se lokalno u pregledniku i ponovno se
 ### Gespeicherte Einstellungen
 Sprache, Bereich und Schwierigkeit werden lokal im Browser gespeichert und beim nächsten Start wiederhergestellt. Beim ersten Start ist Englisch die Standardsprache.
 
+
+### Danksagung
+
+Wenn du unseren Quellcode für eine eigene Version verwendest, würden wir uns über einen Hinweis unter Über / Info freuen:
+
+**Basierend auf Memory Game von Apps & Games — [appsandgames.org](https://appsandgames.org/)**
+
 ---
 
 ## Italiano
@@ -102,6 +123,13 @@ Sprache, Bereich und Schwierigkeit werden lokal im Browser gespeichert und beim 
 ### Impostazioni memorizzate
 Lingua, sezione e difficoltà vengono salvate localmente nel browser e ripristinate al prossimo avvio. Al primo avvio la lingua predefinita è l'inglese.
 
+
+### Riconoscimenti
+
+Se utilizzi il nostro codice sorgente per creare una tua versione del gioco, apprezzeremmo una menzione nella sezione Informazioni / Info:
+
+**Basato su Memory Game di Apps & Games — [appsandgames.org](https://appsandgames.org/)**
+
 ---
 
 ## Español
@@ -125,3 +153,10 @@ Lingua, sezione e difficoltà vengono salvate localmente nel browser e ripristin
 
 ### Ajustes guardados
 El idioma, la sección y la dificultad se guardan localmente en el navegador y se restauran en el siguiente inicio. En el primer inicio, el idioma predeterminado es inglés.
+
+
+### Reconocimientos
+
+Si utilizas nuestro código fuente para crear tu propia versión del juego, agradeceríamos una mención en la sección Acerca de / Información:
+
+**Basado en Memory Game de Apps & Games — [appsandgames.org](https://appsandgames.org/)**
