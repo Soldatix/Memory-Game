@@ -712,7 +712,29 @@
       .board { grid-template-columns: repeat(var(--cols), clamp(68px, 7vw, 108px)); gap: 7px; }
       .game-actions .btn { min-height: 40px; }
     }
+  
+    /* Menu-only advertising, always outside the matching-pairs game board.
+       Break out of .app padding on narrow mobiles so original 320px fits. */
+    #memory-ad-area[hidden],
+    #memory-ad-area .memory-ad-unit[hidden] { display: none !important; }
+    #memory-ad-area { width: 100vw; max-width: 100vw;
+      margin-left: calc(50% - 50vw); padding: 16px 0 8px;
+      display: flex; justify-content: center; align-items: center; }
+    .memory-ad-unit { display: flex; flex-direction: column; align-items: center;
+      justify-content: center; max-width: 100%; text-align: center; }
+    .memory-ad-label { font: 11px/1.4 system-ui,sans-serif;
+      color: var(--muted); padding-bottom: 6px; }
+    .memory-privacy-footer { display: flex; justify-content: center;
+      align-items: center; text-align: center;
+      min-height: 32px; padding: 4px 0 10px; }
+    .memory-privacy-footer .ag-privacy-footer-control {
+      color: var(--accent); cursor: pointer; padding: 6px 12px; }
+    body.memory-game-active #memory-ad-area,
+    body.memory-game-active .memory-privacy-footer { display: none !important; }
+    @media(max-width: 319px) { #memory-ad-area { display: none !important; } }
   </style>
+  <link rel="stylesheet" href="https://appsandgames.org/privacy-choice.css">
+  <script src="https://appsandgames.org/privacy-choice.js" defer></script>
 </head>
 <body>
   <div class="app">
@@ -804,7 +826,17 @@
       </section>
     </main>
 
+    <!-- Original Adsterra code is loaded once, only on approved consent. -->
+    <section id="memory-ad-area" aria-label="Advertisement" hidden>
+      <div class="memory-ad-unit" data-size="728x90" hidden>
+        <script src="./memory-adsterra-loader.js" data-unit="desktop"></script>
+      </div>
+      <div class="memory-ad-unit" data-size="320x50" hidden>
+        <script src="./memory-adsterra-loader.js" data-unit="mobile"></script>
+      </div>
+    </section>
     <div class="footer">Apps &amp; Games • Memory Game</div>
+    <footer class="footer-links memory-privacy-footer" aria-label="Privacy choices"></footer>
   </div>
 
   <div class="modal" id="readmeModal" role="dialog" aria-modal="true" aria-labelledby="readmeTitle">
@@ -1556,6 +1588,7 @@
 
     function showScreen(which) {
       const game = which === 'game';
+      document.body.classList.toggle('memory-game-active', game);
       homeScreen.classList.toggle('active', !game);
       gameScreen.classList.toggle('active', game);
       if (!game) {
