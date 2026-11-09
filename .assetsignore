@@ -1,0 +1,7 @@
+# Publish only Memory Game assets, no development metadata.
+.git/
+.github/
+README.md
+wrangler.jsonc
+.assetsignore
+*.md
