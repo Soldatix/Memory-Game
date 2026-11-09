@@ -1,6 +1,6 @@
 const CACHE_PREFIX='memory-game-';
-const CACHE_NAME=CACHE_PREFIX+'2026-09-30-v2';
-const CORE=['./index.html','./ag-language-menu.js','./pwa.js','./manifest.webmanifest','./icon.svg','./memory-game-cover.svg'];
+const CACHE_NAME=CACHE_PREFIX+'2026-11-09-ad-v3';
+const CORE=['./index.html','./ag-language-menu.js','./pwa.js','./memory-adsterra-loader.js','./manifest.webmanifest','./icon.svg','./memory-game-cover.svg'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith(CACHE_PREFIX)&&k!==CACHE_NAME).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 async function cacheResponse(key,response){try{const c=await caches.open(CACHE_NAME);await c.put(key,response.clone());}catch{}}
